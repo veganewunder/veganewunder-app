@@ -1,103 +1,83 @@
-import Image from "next/image";
-
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const features = [
+    {
+      title: "Zutaten analysieren & veganes Rezept erhalten",
+      description:
+        "Lade ein Foto hoch, wir extrahieren automatisch die Zutaten und generieren ein kreatives, veganes Rezept inklusive Zubereitungsschritten.",
+      href: "/upload",
+      cta: "Zum Rezept-Generator",
+    },
+    {
+      title: "Bestehendes Gericht veganisieren",
+      description:
+        "Dein Lieblingsgericht enthält noch tierische Produkte? Analysiere das Bild und erhalte Ersatzvorschläge sowie einen klaren Umsetzungsplan.",
+      href: "/veganize",
+      cta: "Gericht veganisieren",
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  return (
+    <main className="mx-auto flex w-full max-w-5xl flex-col gap-12">
+      <section className="space-y-6 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1 text-xs font-semibold uppercase tracking-wide text-highlight">
+          KI für vegane Küche
+        </span>
+        <h1 className="text-balance text-4xl font-semibold leading-tight text-primary md:text-5xl">
+          Deine Abkürzung von Foto zu veganem Lieblingsgericht.
+        </h1>
+        <p className="mx-auto max-w-2xl text-lg text-primary/80">
+          Egal ob du neue vegane Rezepte entdecken oder ein bestehendes Gericht anpassen möchtest – veganeWunder analysiert deine Bilder und liefert dir
+          sekundenschnell die passenden Zutaten, Ideen und Schritt-für-Schritt-Anleitungen.
+        </p>
+      </section>
+
+      <section className="grid gap-6 md:grid-cols-2">
+        {features.map((feature) => (
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            key={feature.title}
+            href={feature.href}
+            className="group relative overflow-hidden rounded-3xl border border-accent bg-background/80 p-8 shadow-sm transition hover:shadow-lg"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            <div className="absolute -right-14 top-10 h-32 w-32 rounded-full bg-highlight/10 blur-3xl transition group-hover:bg-highlight/20" />
+            <div className="absolute -left-16 bottom-6 h-28 w-28 rounded-full bg-primary/10 blur-3xl transition group-hover:bg-primary/20" />
+            <div className="relative space-y-4">
+              <h2 className="text-xl font-semibold text-primary">{feature.title}</h2>
+              <p className="text-sm text-primary/75">{feature.description}</p>
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-highlight">
+                {feature.cta}
+                <span aria-hidden>→</span>
+              </span>
+            </div>
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        ))}
+      </section>
+
+      <section className="rounded-3xl border border-accent bg-background/70 p-8 shadow-inner">
+        <h2 className="text-center text-2xl font-semibold text-primary">So funktioniert es</h2>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="space-y-2 text-center">
+            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
+              1
+            </span>
+            <h3 className="text-lg font-semibold text-primary">Foto hochladen</h3>
+            <p className="text-sm text-primary/70">Nutze Drag & Drop, Kamera oder Dateiupload – ganz wie es dir passt.</p>
+          </div>
+          <div className="space-y-2 text-center">
+            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
+              2
+            </span>
+            <h3 className="text-lg font-semibold text-primary">Zutaten verstehen</h3>
+            <p className="text-sm text-primary/70">Unsere KI erkennt die wichtigsten Ingredienzen und berücksichtigt Unverträglichkeiten.</p>
+          </div>
+          <div className="space-y-2 text-center">
+            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
+              3
+            </span>
+            <h3 className="text-lg font-semibold text-primary">Veganes Ergebnis erhalten</h3>
+            <p className="text-sm text-primary/70">Entweder ein frisches Rezept oder eine Anleitung zur Veganisierung deines Gerichts.</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </main>
   );
 }

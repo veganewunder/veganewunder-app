@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import PrimaryNav from "@/components/PrimaryNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,10 +25,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <div className="min-h-screen bg-background text-primary">
+          <PrimaryNav />
+
+          <main className="flex-1 px-4 pb-16 pt-12 sm:px-6">{children}</main>
+
+          <footer className="border-t border-accent/60 bg-background/80">
+            <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-primary/60 sm:flex-row sm:items-center sm:justify-between">
+              <span>© {new Date().getFullYear()} veganeWunder</span>
+              <span className="text-primary/50">Frisch gekocht mit Next.js & KI</span>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );
