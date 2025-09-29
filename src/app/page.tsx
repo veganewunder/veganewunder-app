@@ -1,82 +1,70 @@
+const actions = [
+  {
+    href: "/upload",
+    label: "Zutaten → Rezept",
+    description:
+      "Foto hochladen, Zutaten extrahieren lassen und in wenigen Augenblicken ein veganes Rezept erhalten.",
+    accent: "from-highlight/20 via-highlight/10 to-transparent",
+    badge: "Rezeptgenerator",
+    emoji: "🥗",
+  },
+  {
+    href: "/veganize",
+    label: "Gericht veganisieren",
+    description:
+      "Analyse deines Lieblingsgerichts, smarte Alternativen und ein Fahrplan für die vegane Variante.",
+    accent: "from-primary/20 via-primary/10 to-transparent",
+    badge: "Veganisierung",
+    emoji: "🌱",
+  },
+];
+
 export default function Home() {
-  const features = [
-    {
-      title: "Zutaten analysieren & veganes Rezept erhalten",
-      description:
-        "Lade ein Foto hoch, wir extrahieren automatisch die Zutaten und generieren ein kreatives, veganes Rezept inklusive Zubereitungsschritten.",
-      href: "/upload",
-      cta: "Zum Rezept-Generator",
-    },
-    {
-      title: "Bestehendes Gericht veganisieren",
-      description:
-        "Dein Lieblingsgericht enthält noch tierische Produkte? Analysiere das Bild und erhalte Ersatzvorschläge sowie einen klaren Umsetzungsplan.",
-      href: "/veganize",
-      cta: "Gericht veganisieren",
-    },
-  ];
-
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-col gap-12">
-      <section className="space-y-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1 text-xs font-semibold uppercase tracking-wide text-highlight">
-          KI für vegane Küche
+    <main className="relative mx-auto w-full max-w-4xl px-4 pb-16 pt-20 sm:px-6">
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -left-32 top-10 h-64 w-64 rounded-full bg-highlight/20 blur-[120px]" />
+        <div className="absolute -right-24 bottom-10 h-52 w-52 rounded-full bg-primary/15 blur-[110px]" />
+      </div>
+
+      <section className="space-y-6 rounded-3xl border border-accent/60 bg-background/90 p-10 text-center shadow-xl shadow-primary/5 backdrop-blur">
+        <span className="inline-flex items-center gap-2 rounded-full bg-highlight/15 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-highlight">
+          Sofort loslegen
         </span>
-        <h1 className="text-balance text-4xl font-semibold leading-tight text-primary md:text-5xl">
-          Deine Abkürzung von Foto zu veganem Lieblingsgericht.
+        <h1 className="text-3xl font-semibold leading-snug text-primary sm:text-4xl">
+          Von deinem Foto zum veganen Ergebnis – in wenigen Sekunden
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-primary/80">
-          Egal ob du neue vegane Rezepte entdecken oder ein bestehendes Gericht anpassen möchtest – veganeWunder analysiert deine Bilder und liefert dir
-          sekundenschnell die passenden Zutaten, Ideen und Schritt-für-Schritt-Anleitungen.
+        <p className="mx-auto max-w-2xl text-sm text-primary/70 sm:text-base">
+          Unsere KI erkennt Zutaten, berücksichtigt Unverträglichkeiten und liefert dir entweder ein neues Rezept
+          oder eine vegane Variante deines Lieblingsgerichts. Wähle den Flow, der zu deiner Idee passt.
         </p>
-      </section>
 
-      <section className="grid gap-6 md:grid-cols-2">
-        {features.map((feature) => (
-          <a
-            key={feature.title}
-            href={feature.href}
-            className="group relative overflow-hidden rounded-3xl border border-accent bg-background/80 p-8 shadow-sm transition hover:shadow-lg"
-          >
-            <div className="absolute -right-14 top-10 h-32 w-32 rounded-full bg-highlight/10 blur-3xl transition group-hover:bg-highlight/20" />
-            <div className="absolute -left-16 bottom-6 h-28 w-28 rounded-full bg-primary/10 blur-3xl transition group-hover:bg-primary/20" />
-            <div className="relative space-y-4">
-              <h2 className="text-xl font-semibold text-primary">{feature.title}</h2>
-              <p className="text-sm text-primary/75">{feature.description}</p>
-              <span className="inline-flex items-center gap-2 text-sm font-semibold text-highlight">
-                {feature.cta}
-                <span aria-hidden>→</span>
-              </span>
-            </div>
-          </a>
-        ))}
-      </section>
-
-      <section className="rounded-3xl border border-accent bg-background/70 p-8 shadow-inner">
-        <h2 className="text-center text-2xl font-semibold text-primary">So funktioniert es</h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          <div className="space-y-2 text-center">
-            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
-              1
-            </span>
-            <h3 className="text-lg font-semibold text-primary">Foto hochladen</h3>
-            <p className="text-sm text-primary/70">Nutze Drag & Drop, Kamera oder Dateiupload – ganz wie es dir passt.</p>
-          </div>
-          <div className="space-y-2 text-center">
-            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
-              2
-            </span>
-            <h3 className="text-lg font-semibold text-primary">Zutaten verstehen</h3>
-            <p className="text-sm text-primary/70">Unsere KI erkennt die wichtigsten Ingredienzen und berücksichtigt Unverträglichkeiten.</p>
-          </div>
-          <div className="space-y-2 text-center">
-            <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-highlight text-sm font-semibold text-white">
-              3
-            </span>
-            <h3 className="text-lg font-semibold text-primary">Veganes Ergebnis erhalten</h3>
-            <p className="text-sm text-primary/70">Entweder ein frisches Rezept oder eine Anleitung zur Veganisierung deines Gerichts.</p>
-          </div>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {actions.map((action) => (
+            <a
+              key={action.href}
+              href={action.href}
+              className="group relative overflow-hidden rounded-2xl border border-accent/60 bg-background px-6 py-6 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${action.accent} opacity-70 transition group-hover:opacity-100`} />
+              <div className="relative space-y-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary/70">
+                  {action.emoji} {action.badge}
+                </span>
+                <h2 className="text-xl font-semibold text-primary">{action.label}</h2>
+                <p className="text-sm text-primary/75">{action.description}</p>
+                <span className="inline-flex items-center gap-2 text-sm font-semibold text-highlight">
+                  Flow öffnen
+                  <span aria-hidden>→</span>
+                </span>
+              </div>
+            </a>
+          ))}
         </div>
+
+        <p className="text-xs text-primary/60">
+          Unterstützung für Drag & Drop, Kamera-Upload und eine direkte Anbindung an OpenAI – ganz ohne Setup.
+        </p>
       </section>
     </main>
   );
